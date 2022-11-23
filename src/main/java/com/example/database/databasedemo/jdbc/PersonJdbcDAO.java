@@ -20,4 +20,23 @@ public class PersonJdbcDAO {
     public List<Person> findAll() {
         return jdbcTemplate.query("select * from person", new BeanPropertyRowMapper<>(Person.class));
     }
+
+    //select p from person p
+    public Person findById(int id) {
+        return jdbcTemplate.queryForObject("select * from person where id = ?",
+                new BeanPropertyRowMapper<>(Person.class),
+                id);
+    }
+
+    public List<Person> findAllByName(String name) {
+        return jdbcTemplate.query("select * from person where name = ?",
+                new BeanPropertyRowMapper<>(Person.class),
+                name);
+    }
+
+    public List<Person> findAllByLocation(String location) {
+        return jdbcTemplate.query("select * from person where location = ?",
+                new BeanPropertyRowMapper<>(Person.class),
+                location);
+    }
 }
