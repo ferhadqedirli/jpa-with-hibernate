@@ -6,3 +6,7 @@ create table person
     birth_date timestamp,
     primary key (id)
 );
+
+INSERT INTO PERSON VALUES (10001, 'Farhad', 'Baku', CURRENT_TIMESTAMP);
+INSERT INTO PERSON VALUES (10002, 'Eltac', 'Qusar', CURRENT_TIMESTAMP);
+INSERT INTO PERSON VALUES (10003, 'Togrul', 'Goyce', CURRENT_TIMESTAMP);
