@@ -1,5 +1,6 @@
 package com.example.database.databasedemo;
 
+import com.example.database.databasedemo.entity.Person;
 import com.example.database.databasedemo.jdbc.PersonJdbcDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,11 +8,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Date;
+
 @SpringBootApplication
 public class DatabaseDemoApplication implements CommandLineRunner {
 
     private final PersonJdbcDAO dao;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public DatabaseDemoApplication(PersonJdbcDAO personJdbcDAO) {
         this.dao = personJdbcDAO;
@@ -28,5 +31,9 @@ public class DatabaseDemoApplication implements CommandLineRunner {
         logger.info("Person name Eltac -> {} ", dao.findAllByName("Eltac"));
         logger.info("Person location Goyce -> {} ", dao.findAllByLocation("Goyce"));
         logger.info("Deleting 10002 -> No of Rows Deleted {} ", dao.deleteById(10002));
+        logger.info("Inserting 10004 -> {} ", dao.
+                insert(new Person(10004, "Lara", "New York", new Date())));
+        logger.info("Updating 10003 -> {} ", dao.
+                update(new Person(10003, "Togrul", "Baku", new Date())));
     }
 }
