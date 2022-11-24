@@ -28,7 +28,9 @@ public class JpaDemoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         logger.info("Inserting Person -> {} ", repository.insert(new Person("Tony", "Berlin", new Date())));
+        logger.info("Inserting Person -> {} ", repository.insert(new Person("Bob", "Moscow", new Date())));
         logger.info("Updating Person -> {} ", repository.update(new Person(1,"Tony", "Tokyo", new Date())));
         logger.info("Person info -> {} ", repository.findById(1));
+        repository.deleteById(1);
     }
 }
